@@ -4,12 +4,7 @@
 // Wordpress Tags Usage: https://codex.wordpress.org/Template_Tags
 
 
-get_header();
-
-
-echo 'Hello World!';
-
-get_footer();
+header('Location: /');
 
 
 ?>

@@ -2,9 +2,10 @@ function changeContents(category, number) {
 
 	// Get the data for the category
 	var posts_array = getAllData();
+
 	posts_array = posts_array[category];
 
-	// Find the container
+	// Remove any old navigation if there is any.
 	var posts_container = $('#proizvod-detalji');
 	posts_container.find('#proizvod-navigacija-levo').remove();
 	posts_container.find('#proizvod-navigacija-desno').remove();
@@ -29,23 +30,27 @@ function changeContents(category, number) {
 	}
 
 	function createNav(current) {
-		var min = (current <= 0) ? posts_array.length - 1 : current - 1;
-		var max = (current >= posts_array.length - 1) ? 0 : current + 1;
+		var min = (current <= 0) ? 'kraj' : current - 1;
+		var max = (current >= Object.keys(posts_array).length - 1) ? 'kraj' : current + 1;
 
-		$('<div>', {
-			'id' : 'proizvod-navigacija-levo',
-			'text' : 'LEVO',
-			'style' : 'display: none;'
-		}).appendTo(posts_container).fadeIn('slow').on('click', function() {
-			changeContents(category, min);
-		});
-		$('<div>', {
-			'id' : 'proizvod-navigacija-desno',
-			'text' : 'DESNO',
-			'style' : 'display: none;',
-		}).appendTo(posts_container).fadeIn('slow').on('click', function() {
-			changeContents(category, max);
-		});
+		if (min !== 'kraj') {
+			$('<div>', {
+				'id' : 'proizvod-navigacija-levo',
+				'text' : '< PREVIOUS',
+				'style' : 'display: none;'
+			}).appendTo(posts_container).fadeIn('slow').on('click', function() {
+				changeContents(category, min);
+			});
+		}
+		if (max !== 'kraj') {
+			$('<div>', {
+				'id' : 'proizvod-navigacija-desno',
+				'text' : 'NEXT >',
+				'style' : 'display: none;',
+			}).appendTo(posts_container).fadeIn('slow').on('click', function() {
+				changeContents(category, max);
+			});
+		}
 	}
 
 

@@ -11,22 +11,26 @@
 
 function custom_styles() {
     // Register the style first so that WP knows what we are working with:
-    wp_register_style( 'core-css', get_template_directory_uri() . '/css/style.css' );
-    wp_register_style( 'skin-blue', get_template_directory_uri() . '/css/skins/blue.css' );
+    wp_register_style( 'core-css', get_template_directory_uri() . '/css/zimt.css' );
  
     // Then we need to enqueue them one by one to the theme:
     wp_enqueue_style( 'core-css' );
-    wp_enqueue_style( 'skin-blue' );
 }
 add_action( 'wp_enqueue_scripts', 'custom_styles' );
 
 function custom_scripts() {
     // Register the scripts first so that WP knows what we are working with:
     // Parameters: Slug, url, dependencies, version, in_footer
-    wp_register_script( 'my-js', get_template_directory_uri() . '/ms.js', ['jquery', 'jcrop'], 1.2, true );
+    wp_register_script( 'contentReplacer', get_template_directory_uri() . '/scripts/contentReplacer.js', ['jquery'], 1.2, true );
+    wp_register_script( 'cart', get_template_directory_uri() . '/scripts/cart.js', ['jquery'], 1.2, true );
+    wp_register_script( 'cookie', get_template_directory_uri() . '/scripts/cookie.js', ['jquery'], 1.2, true );
+    wp_register_script( 'delegate', get_template_directory_uri() . '/scripts/delegate.js', ['jquery'], 1.2, true );
  
     // Then we need to enqueue them one by one to the theme:
-    wp_enqueue_script( 'my-js' );
+    wp_enqueue_script( 'contentReplacer' );
+    wp_enqueue_script( 'cart' );
+    wp_enqueue_script( 'cookie' );
+    wp_enqueue_script( 'delegate' );
 }
 add_action( 'wp_enqueue_scripts', 'custom_scripts' );
 
@@ -34,7 +38,7 @@ add_action( 'wp_enqueue_scripts', 'custom_scripts' );
 // Sometimes it is mandatory to have a special version of jQuery. This should be avoided. And allowed only outside admin panel.
 if (!is_admin()) {
         wp_deregister_script('jquery');
-        wp_register_script('jquery', ( get_template_directory_uri() . "/js/jquery-1.9.1.min.js"), false, '1.9.1');
+        wp_register_script('jquery', ( get_template_directory_uri() . "/scripts/jquery-2.2.4.min.js"), false, '2.2.4');
         wp_enqueue_script('jquery');
 }
 
@@ -47,19 +51,11 @@ function register_my_menus() {
   register_nav_menus(
     array(
       'header-menu' => __( 'Header Menu' ),
-      'extra-menu' => __( 'Extra Menu' )
+      'footer-menu' => __( 'Footer Menu' )
     )
   );
 }
 add_action( 'init', 'register_my_menus' );
-
-
-
-
-// We can add post thumbnails option. This allows the 'Featured Image' field when editing posts.
-// Usage: https://codex.wordpress.org/Post_Thumbnails
-
-add_theme_support( 'post-thumbnails' ); 
 
 
 
@@ -75,7 +71,6 @@ add_image_size( 'footer', 64, 64, true );
 remove_action('wp_head', 'rsd_link'); // Weblog client legacy support (editing via custom-made Apps)
 remove_action('wp_head', 'wlwmanifest_link'); // Windows Live Writer Manifest
 remove_action('wp_head', 'wp_generator'); // Built-in Meta generator (if we want to use custom meta tags)
-
 
 
 ?>

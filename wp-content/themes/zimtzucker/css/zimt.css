@@ -65,7 +65,7 @@ main {
 	background-size: cover;
 	background-position: left center;
 	background-repeat: no-repeat;
-	background-image:url('image/back.jpg');
+	background-image:url('../image/back.jpg');
 }
 
 main > div {
@@ -405,7 +405,7 @@ main > div {
 .proizvod-slika-pozadina {
 	height: 400px;
 	width: 414px;
-	background-image: url('image/proizvodi/proizvod-pozadina.png');
+	background-image: url('../image/proizvodi/proizvod-pozadina.png');
 	background-size: contain;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -456,7 +456,7 @@ main > div {
 }
 #cena {
 	position: absolute;
-	background-image: url(image/cena-back.png);
+	background-image: url(../image/cena-back.png);
 	background-size: contain;
 	background-position: center center;
 	background-repeat: no-repeat; 
@@ -475,6 +475,18 @@ main > div {
 	position:relative;
 	top: 20px;
 	color:#FFF;
+}
+#proizvod-navigacija-desno {
+	display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+#proizvod-navigacija-levo {
+	display: block;
+    position: absolute;
+    left: 20px;
+    top: 20px;
 }
 
 
