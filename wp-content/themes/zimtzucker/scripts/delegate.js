@@ -55,8 +55,6 @@ $(document).ready(function() {
 		}
 	});
 
-
-	
 	
 	// Mobile menu
 	$("#mobile-dugme").click(function(){
