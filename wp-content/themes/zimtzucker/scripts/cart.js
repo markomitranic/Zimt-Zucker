@@ -17,7 +17,7 @@ function replaceCartData(ordered) {
 		table += '<tr><td>';
 		table += ordered_item.name + '</td><td>';
 		table += ordered_item.price + '</td><td>';
-		table += '<img src="/zimt/wp/wp-content/themes/zimtzucker/image/remove.png" class="remove-button unclickable" alt="Remove item" data-id="' + ordered_item.id + '"></td></tr>';
+		table += '<img src="/wp-content/themes/zimtzucker/image/remove.png" class="remove-button unclickable" alt="Remove item" data-id="' + ordered_item.id + '"></td></tr>';
 	});
 	listPage.find('table').html(table);
 

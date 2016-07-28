@@ -18,9 +18,9 @@ $(document).ready(function() {
 	// Listener for buying stuff
 	$('#add-to-cart').on('click', function() {
 		if (cookieExists('ordered') && getCookie('ordered') !== '[]') {
-			addCookieData($(this).data('id'), getCookie('ordered'));
+			addCookieData($(this).attr('data-id'), getCookie('ordered'));
 		} else {
-			addCookieData($(this).data('id'), false);
+			addCookieData($(this).attr('data-id'), false);
 		};
 		toggleCartButton(getCookie('ordered')); // Jednom nakon loada
 		replaceCartData(JSON.parse(getCookie('ordered')));	
