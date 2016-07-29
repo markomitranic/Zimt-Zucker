@@ -53,10 +53,6 @@ $message .= '</tbody></table>';
 wp_mail($to, $subject, $message);
 remove_filter('wp_mail_content_type', 'textHtmlFilter');
 
-// Brise cookie
-// echo '<script>setCookie(\'ordered\', true, -30); // RESET COOKIE!! DANGEROUS</script>';
-
-
 get_footer(); 
 
 
@@ -87,8 +83,5 @@ function dataIsValid($data) {
 
 
 ?>
-
-
-
 
 

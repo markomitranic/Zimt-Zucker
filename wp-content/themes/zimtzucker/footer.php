@@ -1,11 +1,7 @@
 	</main>
 
 		<footer class="menu-back-dole">
-			<ul class="footer-menu">
-				<li id="home"><a href="./">HOME</a></li>
-				<li id="kontakt"><a href="./contact">KONTAKT</a></li>
-				<li id="impressum"><a href="./impressum">IMPRESSUM</a></li>               
-			</ul>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer-menu', 'menu_class' => 'footer-menu') ); ?>
 		</footer>
 
 	<div id="checkout-button">
@@ -21,7 +17,7 @@
 			<button>☞</button>
 		</div>
 		<div id="cart-form">
-			<div id="form-back-button"><</div>
+			<div id="form-back-button"><<</div>
 			<h1>Enter your contact details:</h1>
 			<form id="order-form">
 				<label for="name">Name:</label>
@@ -67,8 +63,8 @@
 			$dataObject[$categoryName][] = [
 				'id' => get_the_ID(),
 				'name' => get_the_title(),
-				'price' => 5,
-				'image' => 'imag',
+				'price' => get_field('price'),
+				'image' => get_field('image')['sizes']['Product'],
 				'description' => wp_strip_all_tags( get_the_content() )
 			];
 		}

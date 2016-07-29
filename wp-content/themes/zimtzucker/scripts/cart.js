@@ -34,6 +34,8 @@ function replaceCartData(ordered) {
 function sendEmailOrder(formObject) {
 	// Add data from the food order itself
 	formObject.order = JSON.parse(getCookie('ordered'));
+	// Clear cookie
+	setCookie("ordered", "false", -1);
 	var path = '/order-sent/';
 	jQuery.redirect(path, formObject);
 }

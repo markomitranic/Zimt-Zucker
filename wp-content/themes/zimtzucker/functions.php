@@ -70,8 +70,7 @@ add_action( 'init', 'register_my_menus' );
 // We can add predefined image sizes that wordpress will automatically create while uploading.
 // Usage: https://developer.wordpress.org/reference/functions/add_image_size/
 
-add_image_size( 'Big', 500, 500, false ); // $name, $min-width, $min-height, $crop
-add_image_size( 'footer', 64, 64, true ); 
+add_image_size( 'Product', 500, 500, false ); // $name, $min-width, $min-height, $crop
 
 
 // There are a few unneeded tags within our <head>. It looks messy. We can disable/unmount them here/
