@@ -16,34 +16,22 @@
 		<div id="cart-list">
 			<h1>Your Cart:</h1>
 			<table>
-				<tr>
-					<td>Sushi bowl extra large for three people</td>
-					<td>5,90$</td>
-					<td><img src="<?php echo get_bloginfo('template_url'); ?>/image/remove.png" class="remove-button unclickable" alt="Remove item"></td>
-				</tr>
-				<tr>
-					<td>Sushi bowl extra large for three people</td>
-					<td>5,90$</td>
-					<td><img src="<?php echo get_bloginfo('template_url'); ?>/image/remove.png" class="remove-button unclickable" alt="Remove item"></td>
-				</tr>
-				<tr>
-					<td>Sushi bowl extra large for three people</td>
-					<td>5,90$</td>
-					<td><img src="<?php echo get_bloginfo('template_url'); ?>/image/remove.png" class="remove-button unclickable" alt="Remove item"></td>
-				</tr>
 			</table>
-			<p>Total: <span>12,30$</span></p>
+			<p>Total: <span>00,00 €</span></p>
 			<button>☞</button>
 		</div>
 		<div id="cart-form">
+			<div id="form-back-button"><</div>
 			<h1>Enter your contact details:</h1>
-			<form>
+			<form id="order-form">
 				<label for="name">Name:</label>
-				<input type="text" name="name" id="name">
+				<input type="text" name="name" id="name" required>
 				<label for="phone">Phone:</label>
-				<input type="text" name="phone" id="phone">
+				<input type="number" name="phone" id="phone" required>
+				<label for="email">E-mail:</label>
+				<input type="text" name="email" id="email" required>
 				<label for="address">Address:</label>
-				<input type="text" name="address" id="address">
+				<input type="text" name="address" id="address" required>
 				<label for="additional">Additional Instructions:</label>
 				<textarea id="additional" name="additional" rows="3"></textarea>
 				<button>✓</button>
@@ -96,5 +84,6 @@
 	</div>
 
 	<?php wp_footer(); ?>
+
 </body>
 </html>

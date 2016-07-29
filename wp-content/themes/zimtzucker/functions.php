@@ -24,9 +24,17 @@ function custom_scripts() {
     wp_register_script( 'contentReplacer', get_template_directory_uri() . '/scripts/contentReplacer.js', ['jquery'], 1.2, true );
     wp_register_script( 'cart', get_template_directory_uri() . '/scripts/cart.js', ['jquery'], 1.2, true );
     wp_register_script( 'cookie', get_template_directory_uri() . '/scripts/cookie.js', ['jquery'], 1.2, true );
+    wp_register_script( 'form-validator', get_template_directory_uri() . '/scripts/jquery.validate.min.js', ['jquery'], '2.3.26', true );
+    wp_register_script( 'form-creator', get_template_directory_uri() . '/scripts/formCreator.js', ['jquery'], '2.3.26', true );
     wp_register_script( 'delegate', get_template_directory_uri() . '/scripts/delegate.js', ['jquery'], 1.2, true );
+
+
+
+    
  
     // Then we need to enqueue them one by one to the theme:
+    wp_enqueue_script( 'form-validator' );
+    wp_enqueue_script( 'form-creator' );
     wp_enqueue_script( 'contentReplacer' );
     wp_enqueue_script( 'cart' );
     wp_enqueue_script( 'cookie' );

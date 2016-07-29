@@ -31,13 +31,42 @@ function replaceCartData(ordered) {
 	listPage.find('p span').html(cartValue.toFixed(2) + '€');
 }
 
-function verifyFormData() {
-	var form = $('#cart-form form');
-	var errors = false;
-
-	if (form.find('#name').val() == '') { form.find('#name').css('background-color', 'red'); errors = true; }
-	if (form.find('#phone').val() == '') { form.find('#phone').css('background-color', 'red'); errors = true; }
-	if (form.find('#address').val() == '') { form.find('#address').css('background-color', 'red'); errors = true; }
-
-	return errors;
+function sendEmailOrder(formObject) {
+	// Add data from the food order itself
+	formObject.order = JSON.parse(getCookie('ordered'));
+	var path = '/order-sent/';
+	jQuery.redirect(path, formObject);
 }
+
+function onEmailSent(data) {
+	console.log(data);
+}
+
+function objectFromForm($form) {
+	var data = {};
+	data.address = {};
+	var inputsArray = [];
+
+	// Regular Inputs and Textareas
+	$form.children('input, textarea').each(function(index, element) {
+		$element = $(element);
+		var fieldName = $element.attr('name');
+		var fieldValue = $element.val();
+		data["address"][fieldName] = fieldValue;
+	});
+
+	return data;
+}
+
+
+$('#order-form').validate({
+	rules : {
+		name : 'required',
+		phone : 'required',
+		address : 'required',
+		email : {
+			email : true,
+			required : true
+		}
+	}
+});

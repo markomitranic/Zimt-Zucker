@@ -45,14 +45,20 @@ $(document).ready(function() {
 		$('#cart-list').slideUp('slow');
 		$('#cart-form').slideDown('slow');
 	});
-	$('#cart-form form button').on('click', function(e) {
-		e.preventDefault();
-		$(this).closest('form').find('input').css('background-color', 'white');
-		var form_has_errors = verifyFormData();
 
-		if (!form_has_errors) {
-			console.log('SEND EMAIL!!!');
+	// Listen On form send
+	$('#order-form').on('submit', function(e) {
+		e.preventDefault();
+		if ($(this).valid()) {
+			sendEmailOrder(objectFromForm($(this)));
 		}
+	});
+
+	// Listen for previous step
+	$('#form-back-button').on('click', function(e) {
+		e.preventDefault();
+		$('#cart-form').slideUp('slow');
+		$('#cart-list').slideDown('slow');
 	});
 
 	
@@ -69,3 +75,27 @@ $(document).ready(function() {
 
 
 }); 
+
+
+
+// jquery extend function
+$.extend(
+{
+    redirectPost: function(location, args)
+    {
+        var form = $('<form></form>');
+        form.attr("method", "post");
+        form.attr("action", location);
+
+        $.each( args, function( key, value ) {
+            var field = $('<input></input>');
+
+            field.attr("type", "hidden");
+            field.attr("name", key);
+            field.attr("value", value);
+
+            form.append(field);
+        });
+        $(form).appendTo('body').submit();
+    }
+});
