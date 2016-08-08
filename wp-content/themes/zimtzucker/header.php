@@ -17,14 +17,9 @@ If you are not into that kind of stuff and need special elements, classes and st
 	<meta name="description" content="" />
 	<meta name="keywords" content="">
 
-    <title><?php wp_title(); ?></title>
+    <title><?php echo get_the_title() . ' ~ ' . get_bloginfo('name'); ?></title>
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-
-	<meta property="og:title" content="" /> 
-	<meta property="og:image" content="" /> 
-	<meta property="og:description" content="" /> 
-	<meta property="og:url" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 

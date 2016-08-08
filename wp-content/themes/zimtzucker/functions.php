@@ -107,4 +107,52 @@ add_filter('tiny_mce_before_init', 'override_mce_options');
 
 
 
+
+// OPEN GRAPH
+add_action('wp_head', 'fb_opengraph_meta');
+function fb_opengraph_meta() {
+  global $post;
+  if (is_single()) {
+    $image = get_field('hero_slika')['url'];
+  } else {
+    $image = get_bloginfo('template_url') . '/image/facebook-hero.jpg';
+  }
+
+  $description = my_excerpt( $post->post_content, $post->post_excerpt );
+  $description = strip_tags($description);
+  $description = str_replace("\"", "'", $description);
+
+  $output = '<meta property="og:title" content="'.get_the_title() . ' ~ ' . get_bloginfo('name').'" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="'.$image.'" />
+  <meta property="og:url" content="'.get_the_permalink().'" />
+  <meta property="og:description" content="'.$description.'" />
+  <meta property="og:site_name" content="'.get_bloginfo('name').'" />';
+
+echo $output;
+
+}
+
+function my_excerpt($text, $excerpt){
+ if ($excerpt) return $excerpt;
+ $text = strip_shortcodes( $text );
+ $text = apply_filters('the_content', $text);
+ $text = str_replace(']]>', ']]&gt;', $text);
+ $text = strip_tags($text);
+ $excerpt_length = apply_filters('excerpt_length', 60);
+ $excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
+ $words = preg_split("/[\n]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+ if ( count($words) > $excerpt_length ) {
+   array_pop($words);
+   $text = implode(' ', $words);
+   $text = $text . $excerpt_more;
+ } else {
+   $text = implode(' ', $words);
+ }
+ return apply_filters('wp_trim_excerpt', $text, $excerpt);
+}
+
+
+
+
 ?>
