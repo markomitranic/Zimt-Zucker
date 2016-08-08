@@ -41,9 +41,11 @@ $(document).ready(function() {
 
 	// Listen for next Step
 	$('#cart-list button').on('click', function(e) {
-		e.preventDefault();
-		$('#cart-list').slideUp('slow');
-		$('#cart-form').slideDown('slow');
+		if (cookieExists('ordered') && getCookie('ordered') !== '[]') {
+			e.preventDefault();
+			$('#cart-list').slideUp('slow');
+			$('#cart-form').slideDown('slow');			
+		}
 	});
 
 	// Listen On form send
