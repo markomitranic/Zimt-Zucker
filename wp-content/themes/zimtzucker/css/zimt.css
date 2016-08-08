@@ -115,6 +115,18 @@ main > div {
 	height: 100%;
 	width: 100%;
 }
+.animated-cart-icon {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    height: 70px;
+    width: 70px;
+    z-index: 9999;
+    overflow: hidden;
+    cursor: pointer;
+    display: none;
+    opacity: 1;
+}
 
 #checkout-div {
     display: none;

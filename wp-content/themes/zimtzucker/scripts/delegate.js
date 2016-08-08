@@ -8,11 +8,31 @@ $(document).ready(function() {
 
 	// Menu links for the categories
 	$('.product-category-link').on('click', function(e) {
-		e.preventDefault();
-		var category = $(this).data('category');
-		changeContents(category);
-		$("#svi-proizvodi").fadeOut(500);  
-		$("#proizvod-detalji").fadeIn(500); 
+		if (window.location.pathname === "/") { // if homepage
+			e.preventDefault();
+			var category = $(this).data('category');
+			changeContents(category);
+			$("#svi-proizvodi").fadeOut(500);  
+			$("#proizvod-detalji").fadeIn(500); 
+		}
+	});
+
+
+	// Listener if the page is home and the page has a special url, it should show the category
+	$(document).ready(function() {
+		if (window.location.hash !== "") { // if homepage
+			// Strip the category tag
+			var category = window.location.hash.split('#menu-').join('');
+
+			// Verify that it is indeed a category
+			var allData = getAllData();
+
+			if (allData[category]) {
+				changeContents(category);
+				$("#svi-proizvodi").fadeOut(500);  
+				$("#proizvod-detalji").fadeIn(500); 
+			}
+		}
 	});
 
 	// Listener for buying stuff
@@ -23,6 +43,7 @@ $(document).ready(function() {
 			addCookieData($(this).attr('data-id'), false);
 		};
 		toggleCartButton(getCookie('ordered')); // Jednom nakon loada
+		animateAddedIcon($('.proizvod-slika')); // Just do a micro animation of the icon
 		replaceCartData(JSON.parse(getCookie('ordered')));	
 	});
 
@@ -78,6 +99,26 @@ $(document).ready(function() {
 
 }); 
 
+
+	function animateAddedIcon($icon) {
+		var $newIcon = $icon.clone();
+		$newIcon.removeClass('proizvod-slika').addClass('animated-cart-icon').insertAfter('#checkout-button');
+		$newIcon.fadeIn(200, function() {
+			$newIcon.animate({
+				'bottom' : 60,
+				'right' : 50,
+				'height' : 1,
+				'width' : 1,
+				'opacity' : 0
+			}, {
+				duration : 700,
+				complete : function() {
+					$newIcon.remove();
+				}
+			});
+		});
+
+	}
 
 
 // jquery extend function
