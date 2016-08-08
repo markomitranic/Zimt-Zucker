@@ -79,5 +79,32 @@ remove_action('wp_head', 'rsd_link'); // Weblog client legacy support (editing v
 remove_action('wp_head', 'wlwmanifest_link'); // Windows Live Writer Manifest
 remove_action('wp_head', 'wp_generator'); // Built-in Meta generator (if we want to use custom meta tags)
 
+// Disable galleries support
+add_action( 'admin_head_media_upload_gallery_form', 'mfields_remove_gallery_setting_div' );
+if( !function_exists( 'mfields_remove_gallery_setting_div' ) ) {
+   function mfields_remove_gallery_setting_div() {
+        print '
+        <style type="text/css">
+     #gallery-settings *{
+           display:none;
+       }
+    </style>';
+    }
+}
+
+function filter_ptags_on_images($content){
+ return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
+}
+add_filter('the_content', 'filter_ptags_on_images');
+
+function override_mce_options($initArray) {
+  $opts = '*[*]';
+  $initArray['valid_elements'] = $opts;
+  $initArray['extended_valid_elements'] = $opts;
+  return $initArray;
+}
+add_filter('tiny_mce_before_init', 'override_mce_options'); 
+
+
 
 ?>

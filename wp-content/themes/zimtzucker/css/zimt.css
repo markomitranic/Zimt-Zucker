@@ -463,6 +463,13 @@ main > div {
 	position: absolute;
 	bottom: 110px;
 	right: 110px;
+	cursor:pointer;
+}
+#add-to-cart:hover {
+	-webkit-filter: brightness(.9);
+    -moz-filter: brightness(.9);
+    -ms-filter: brightness(.9);
+    filter: brightness(.9);
 }
 #cena {
 	position: absolute;
@@ -473,9 +480,9 @@ main > div {
 	width: 100px;
 	height: 100px;
 	top: 50%;
-	left: 10px;
-	-webkit-transform: translateY(-190px);
-	transform: translateY(-190px);
+	left: 50px;
+	-webkit-transform: translateY(-220px);
+	transform: translateY(-220px);
 }
 #cena h5 {
 	font-family: 'Indie Flower', cursive;
@@ -489,15 +496,75 @@ main > div {
 #proizvod-navigacija-desno {
 	display: block;
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 30px;
+    top: 50%;
+	cursor: pointer;
+	width: 0; 
+  height: 0;
+	border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  -webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+  
+  border-left: 20px solid red;
+	
 }
+#proizvod-navigacija-desno:hover {
+border-left: 20px solid   #F60;	
+}
+#proizvod-navigacija-levo:hover {
+border-right:20px solid   #F60;		
+}
+
 #proizvod-navigacija-levo {
 	display: block;
     position: absolute;
-    left: 20px;
-    top: 20px;
+    left: 30px;
+    top: 50%;
+	cursor: pointer;
+	width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;   
+  border-right:20px solid red; 
+   -webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
+
+.impressum-table {
+	position: absolute;
+	width: 100%;
+	left: 30px;
+	border-collapse: collapse;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	
+}
+
+.impressum-table tr {
+	float:left;
+}
+.impressum-table td {
+	vertical-align: middle;
+}
+
+.impressum-naslov {
+	font-family: 'AmericanTypewriter';
+	font-size: 50px;
+	font-weight: 200;
+	}
+.impressum-txt {
+	font-family: 'AmericanTypewriter';
+	font-size: 15px;
+	font-weight: 200;
+	}
+.impressum-bold {
+	font-family: 'AmericanTypewriter';
+	font-size: 18px;
+	font-weight: 900;
+	}
+
 
 
 
@@ -559,6 +626,9 @@ main > div {
 	#add-to-cart {
 		right: 20px;
 	}
+	.impressum-table {
+	left: 0px;	
+    }
 }
 
 @media (max-width : 1024px) {
@@ -604,6 +674,36 @@ main > div {
 		position: static;
 		padding-top: 20px;
 		margin: 0 40px;
+	}
+	.impressum-table {
+	position: relative;
+	width: 100%;
+	top: 0px;
+	-webkit-transform: none;
+	transform: none;
+	
+    }
+    .impressum-img {
+	text-align:center;
+	
+    }
+	.impressum-table tr {
+	float: left;
+	text-align:center;
+	}
+	.impressum-table td {
+	vertical-align: top;
+	float:left;
+    }
+	
+	.impressum-naslov {
+	font-size: 40px;
+	}
+.impressum-txt {
+	font-size: 12px;
+	}
+.impressum-bold {
+	font-size: 15px;
 	}
 
 

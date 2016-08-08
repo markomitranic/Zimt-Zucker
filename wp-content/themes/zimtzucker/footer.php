@@ -43,7 +43,7 @@
 	<?php
 	$dataObject = array();
 	// List of Category IDs to query
-	$categoriesList = [8, 7, 6, 5, 4, 3];
+	$categoriesList = [8, 7, 6, 5, 4, 3, 10];
 
 	foreach ($categoriesList as $key => $value) {
 		$args = array(
@@ -65,7 +65,7 @@
 				'name' => get_the_title(),
 				'price' => get_field('price'),
 				'image' => get_field('image')['sizes']['Product'],
-				'description' => wp_strip_all_tags( get_the_content() )
+				'description' => htmlentities( get_the_content(), ENT_QUOTES )
 			];
 		}
 		wp_reset_postdata();

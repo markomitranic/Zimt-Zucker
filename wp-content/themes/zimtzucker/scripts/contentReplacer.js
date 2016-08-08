@@ -24,9 +24,15 @@ function changeContents(category, number) {
 	function fillPost() {
 		posts_container.find('.proizvod-slika').attr('src', current_post.image);
 		posts_container.find('#opis h2').html(current_post.name);
-		posts_container.find('#opis h3').html(current_post.description);
+		posts_container.find('#opis h3').html(decodeHtmlEntities(current_post.description));
 		posts_container.find('#cena h5').html(current_post.price + '€');
 		posts_container.find('#add-to-cart').attr('data-id', current_post.id);
+	}
+
+	function decodeHtmlEntities(html) {
+	    var txt = document.createElement("textarea");
+	    txt.innerHTML = html;
+	    return txt.value;
 	}
 
 	function createNav(current) {
@@ -36,7 +42,7 @@ function changeContents(category, number) {
 		if (min !== 'kraj') {
 			$('<div>', {
 				'id' : 'proizvod-navigacija-levo',
-				'text' : '< PREVIOUS',
+				'text' : '',
 				'style' : 'display: none;'
 			}).appendTo(posts_container).fadeIn('slow').on('click', function() {
 				changeContents(category, min);
@@ -45,7 +51,7 @@ function changeContents(category, number) {
 		if (max !== 'kraj') {
 			$('<div>', {
 				'id' : 'proizvod-navigacija-desno',
-				'text' : 'NEXT >',
+				'text' : '',
 				'style' : 'display: none;',
 			}).appendTo(posts_container).fadeIn('slow').on('click', function() {
 				changeContents(category, max);

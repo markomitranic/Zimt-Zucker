@@ -23,16 +23,16 @@
 define('DB_NAME', 'db639386706');
 
 /** MySQL database username */
-define('DB_USER', 'root');
-// define('DB_USER', 'dbo639386706');
+// define('DB_USER', 'root');
+define('DB_USER', 'dbo639386706');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'root');
-// define('DB_PASSWORD', 'jk993RktW0');
+// define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', 'jk993RktW0');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
-// define('DB_HOST', 'db639386706.db.1and1.com');
+// define('DB_HOST', 'localhost');
+define('DB_HOST', 'db639386706.db.1and1.com');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');
